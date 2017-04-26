@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉选择</title>
+    <style>
+      .control-group {
+          float: left;
+      }
+      #select1 {
+          width: 80px;
+          height: 200px;
+      }
+      #select2 {
+          width: 80px;
+          height: 200px;
+          /*margin-left: 20px;*/
+      }
+      .ct-box {
+          width: 150px;
+          text-align: center;
+          line-height: 24px;
+          background: #e5e5e5;
+          border: 1px solid #f2f2f2;
+          margin: 0 10px 5px 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="control-group">
+
+        <select multiple id="select1">
+            <option value="">选项1</option>
+            <option value="">选项2</option>
+            <option value="">选项3</option>
+            <option value="">选项4</option>
+            <option value="">选项5</option>
+            <option value="">选项6</option>
+        </select>
+    </div>
+    <div class="control-group">
+        <div id="add" class="ct-box">添加到左边&gt;&gt;</div>
+        <div id="add-all" class="ct-box">全部添加&gt;&gt;</div>
+        <div id="remove" class="ct-box">&lt;&lt;添加到左边</div>
+        <div id="remove-all" class="ct-box">&lt;&lt;全部到左边</div>        
+    </div>
+    <div class="control-group">
+        <select multiple id="select2">
+
+        </select>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+
+            // 左侧添加到右侧
+            $("#add").click(function(){
+                var $options = $("#select1 option:selected");
+                $options.appendTo("#select2");
+            });
+
+            $("#add-all").click(function(){
+                var $options = $("#select1 option");
+                $options.appendTo("#select2");
+            });
+
+            $("#select1").dblclick(function(){
+                var $options = $("option:selected",this);
+                $options.appendTo("#select2");
+            });
+
+            // 右侧移到左边
+
+            $("#remove").click(function(){
+                var $options = $("#select2 option:selected");
+                $options.appendTo("#select1");
+            });
+            $("#remove-all").click(function(){
+                var $options = $("#select2 option");
+                $options.appendTo("#select1");
+            });
+
+            $("#select2").dblclick(function(){
+                var $options = $("option:selected",this);
+                $options.appendTo("#select1");
+            });
+        });
+    </script>
+</body>
+</html>

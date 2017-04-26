@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>展开&折叠</title>
+    <style>
+        html, body, ul, li, div {
+            margin: 0;
+            padding: 0;
+        }
+        .clearfix {
+            display: table;
+            content: "";
+            clear: both;
+        }
+        ul, li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #07d;
+        }
+      .subCategoryBox  {
+        width: 500px;
+        margin: 10px auto;
+      }
+      .subCategoryBox li {
+          float: left;
+          width: 100px;
+          margin-right: 50px;
+          margin-bottom: 10px;
+          color: #07d;
+      }
+      .subCategoryBox .showMore {
+          width: 100px;
+          height: 24px;
+          line-height: 24px;
+          text-align: center;
+          margin-top: 10px;
+          border: 1px solid #e5e5e5;
+      }
+      .required {
+          color: orange;
+      }
+    </style>
+</head>
+<body>
+    <div class="subCategoryBox">
+        <ul class="clearfix">
+            <li><a href="">佳能</a></li>
+            <li><a href="">富士</a></li>
+            <li><a href="">尼康</a></li>
+            <li><a href="">三星</a></li>
+            <li><a href="">松下</a></li>
+            <li><a href="">索尼</a></li>
+            <li><a href="">卡西欧</a></li>
+            <li><a href="">奥巴斯林</a></li>
+            <li><a href="">柯达</a></li>
+            <li><a href="">宾得</a></li>
+            <li><a href="">明基</a></li>
+            <li><a href="">理光</a></li>
+            <li><a href="">爱国者</a></li>
+            <li><a href="">其他品牌</a></li>
+        </ul>
+
+        <div class="showMore">
+            <a href=""><span>显示更多品牌</span></a>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            var $category = $("ul li:gt(5):not(:last)");  //获得索引值大于5的品牌集集合对象（不包括最后一个）
+            $category.hide(); 
+            
+            var $toggleBtn = $("div.showMore > a");
+            
+            $toggleBtn.click(function(){
+                if($category.is(":visible")){
+                    $category.hide();
+                    $(this).find("span").text("显示更多品牌");
+                    $("ul li > a").filter(":contains('尼康'),:contains('索尼'),:contains('佳能')").removeClass('required');                    
+                }else{
+                    $category.show();
+                    $(this).find("span").text("收起品牌");
+                    $("ul li > a").filter(":contains('尼康'),:contains('索尼'),:contains('佳能')").addClass('required');
+                }
+                return false;  //阻止a链接跳转
+            });
+
+
+            
+        })
+    </script>
+</body>
+</html>
