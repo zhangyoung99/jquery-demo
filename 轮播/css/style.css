@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+.clearfix {
+  display: table;
+  content: '';
+  clear: both;
+}
+#container {
+  position: relative;
+  width: 450px;
+  height: 700px;
+  overflow: hidden;
+}
+#container:hover .arrow {
+  display: block;
+}
+#container #list {
+  width: 2700px;
+  height: 700px;
+  position: absolute;
+}
+#container #list img {
+  float: left;
+}
+#container #buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 200px;
+  height: 14px;
+  left: 160px;
+}
+#container #buttons span {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 50%;
+  float: left;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  margin-right: 5px;
+  cursor: pointer;
+}
+#container #buttons .active {
+  background: #666;
+}
+#container .arrow {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  line-height: 40px;
+  font-size: 26px;
+  z-index: 9;
+  color: #fff;
+}
+#container .arrow:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#container #prev {
+  position: absolute;
+  left: 5px;
+  top: 380px;
+}
+#container #next {
+  position: absolute;
+  right: 5px;
+  top: 380px;
+}
